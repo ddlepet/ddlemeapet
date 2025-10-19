@@ -4,20 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Doodle Me A Pet</title>
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Lexend', sans-serif;
       background-color: #ffffff;
       color: #333333;
-      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
       justify-content: flex-start;
+      text-align: center;
       padding-bottom: 50px;
     }
 
@@ -26,22 +30,25 @@
     }
 
     header img {
-      max-width: 500px; /* más grande que antes */
+      max-width: 500px;
       width: 100%;
       height: auto;
     }
 
-.tagline {
-  margin-top: 60px;
-  font-size: 1.5rem;
-  line-height: 1.5;
-  font-weight: 400;
-  background-color: #ffffff; /* gris clarito */
-  padding: 20px 25px;
-  width: 100%;               /* ocupa todo el ancho del contenedor */
-  box-sizing: border-box;    /* padding dentro del ancho */
-  border-radius: 0;
-}
+    .tagline {
+      margin-top: 60px;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      font-weight: 400;
+      background-color: #ffffff;
+      padding: 20px 25px;
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+      border-radius: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     .tagline strong {
       font-weight: 600;
@@ -74,84 +81,82 @@
       box-shadow: 0px 3px 0px black;
     }
 
-    /* Galería */
     h1.gallery-title {
-      text-align: center;
       margin-top: 60px;
       margin-bottom: 12px;
       font-weight: 600;
+      text-align: center;
     }
 
-#gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  justify-content: center; /* centra las columnas */
-  align-items: start;
-  width: 100%;
-  max-width: 1200px;
-  padding: 0 20px;
-  margin: 0 auto;
-}
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      justify-content: center;
+      justify-items: center;
+      align-items: start;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 20px;
+      margin: 0 auto;
+    }
 
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* centra cada imagen y su caption */
-  width: 100%;
-  max-width: 260px;
-  margin: 0 auto;
-}
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 260px;
+    }
 
-.card {
-  width: 100%;
-  position: relative; /* necesario para que la miniatura se posicione en la esquina */
-  display: flex;
-  justify-content: center; /* centra la imagen principal */
-  background: white;
-  border-radius: 14px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .card {
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.card:hover {
-  transform: translateY(-4px); /* se levanta al pasar el mouse */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.12); /* sombra más marcada al levantar */
-}
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+    }
 
-.card img.main {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
-  background: #f3f3f3;
-}
+    .card img.main {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      background: #f3f3f3;
+    }
 
-.card img.thumb {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-  background: #fff;
-  cursor: pointer;
-}
+    .card img.thumb {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+      background: #fff;
+      cursor: pointer;
+    }
 
-.caption {
-  text-align: center;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 8px;
-  color: #444;
-  max-width: 260px;
-  word-break: break-word;
-}
+    .caption {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      margin-top: 8px;
+      color: #444;
+      word-break: break-word;
+    }
 
     #status {
       text-align:center;
@@ -159,7 +164,6 @@
       margin-bottom: 12px;
     }
 
-    /* Modal */
     #modal {
       display: none;
       position: fixed;
@@ -201,17 +205,14 @@
 
   <a class="buy-button" href="https://forms.gle/wjSzwUXER89WTyDy9" target="_blank">Submit Your Pet!</a>
 
-  <!-- Gallery Section -->
   <h1 class="gallery-title">Gallery</h1>
   <p id="status">Loading...</p>
   <div id="gallery" aria-live="polite"></div>
 
-  <!-- Modal -->
   <div id="modal" onclick="closeModal()">
     <img id="modal-img" src="" alt="Imagen ampliada">
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
   <script>
     const CSV_URL = 'https://raw.githubusercontent.com/ddlepet/photos/refs/heads/main/gallery.csv';
@@ -262,7 +263,7 @@
             const keys = Object.keys(row);
             imgA = row[keys[0]] || '';
             imgB = row[keys[1]] || '';
-            caption = row[keys[2]] || row['caption'] || row['descripcion'] || row['description'] || row['title'] || '';
+            caption = row[keys[2]] || '';
           }
 
           if (typeof imgA === 'string') imgA = imgA.trim();
