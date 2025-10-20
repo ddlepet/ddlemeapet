@@ -14,8 +14,8 @@
 
     body {
       font-family: 'Lexend', sans-serif;
-      background-color: #ffffff;
-      color: #333333;
+      background-color: #1e1e1e;
+      color: #e0e0e0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -23,6 +23,30 @@
       justify-content: flex-start;
       text-align: center;
       padding-bottom: 50px;
+      background-image: linear-gradient(0deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 100% 24px; /* lines every 24px */
+    }
+
+    /* Botón de modo */
+    #mode-toggle {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 2000;
+      padding: 8px 12px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #333;
+      color: #e0e0e0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+      transition: all 0.2s ease;
+    }
+
+    #mode-toggle:hover {
+      background-color: #555;
     }
 
     header {
@@ -52,15 +76,15 @@
     }
 
     .buy-button {
-      background-color: white;
-      color: black;
+      background-color: #2c2c2c;
+      color: #e0e0e0;
       padding: 14px 28px;
-      border: 3px solid black;
+      border: 3px solid #e0e0e0;
       border-radius: 10px;
       font-size: 20px;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: 0px 6px 0px black;
+      box-shadow: 0px 6px 0px #000;
       transition: all 0.2s ease;
       text-decoration: none;
       display: inline-block;
@@ -68,14 +92,14 @@
     }
 
     .buy-button:hover {
-      background-color: #f0f0f0;
+      background-color: #444;
       transform: translateY(-3px);
-      box-shadow: 0px 9px 0px black;
+      box-shadow: 0px 9px 0px #000;
     }
 
     .buy-button:active {
       transform: translateY(3px);
-      box-shadow: 0px 3px 0px black;
+      box-shadow: 0px 3px 0px #000;
     }
 
     h1.gallery-title {
@@ -108,7 +132,7 @@
       position: relative;
       display: flex;
       justify-content: center;
-      background: white;
+      background: #2c2c2c;
       border-radius: 14px;
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
       overflow: hidden;
@@ -126,7 +150,7 @@
       height: auto;
       object-fit: contain;
       display: block;
-      background: #f3f3f3;
+      background: #3a3a3a;
     }
 
     .card img.thumb {
@@ -137,9 +161,9 @@
       height: 60px;
       object-fit: cover;
       border-radius: 8px;
-      border: 2px solid white;
+      border: 2px solid #e0e0e0;
       box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-      background: #fff;
+      background: #3a3a3a;
       cursor: pointer;
     }
 
@@ -148,13 +172,13 @@
       font-size: 14px;
       font-weight: 500;
       margin-top: 8px;
-      color: #444;
+      color: #ccc;
       word-break: break-word;
     }
 
     #status {
       text-align:center;
-      color:#666;
+      color:#aaa;
       margin-bottom: 12px;
     }
 
@@ -183,17 +207,68 @@
       height:100%;
       color:#999;
       font-size:14px;
-      background: linear-gradient(135deg,#fafafa,#eee);
+      background: linear-gradient(135deg,#2a2a2a,#3a3a3a);
     }
+
+    /* Modo diurno */
+    body.light {
+      background-color: #ffffff;
+      color: #333333;
+      background-image: linear-gradient(0deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    }
+
+    body.light .buy-button {
+      background-color: #f9f9f9;
+      color: #000;
+      border: 3px solid #000;
+      box-shadow: 0 6px 0 #666;
+    }
+
+    body.light .buy-button:hover {
+      background-color: #eee;
+      box-shadow: 0 9px 0 #666;
+    }
+
+    body.light .card {
+      background: #f0f0f0;
+    }
+
+    body.light .card img.main {
+      background: #eaeaea;
+    }
+
+    body.light .card img.thumb {
+      border: 2px solid #333;
+      background: #ddd;
+    }
+
+    body.light .caption {
+      color: #444;
+    }
+
+    body.light #status {
+      color: #666;
+    }
+
+    #mode-toggle.light {
+      background-color: #eee;
+      color: #111;
+    }
+
+    #mode-toggle.light:hover {
+      background-color: #ccc;
+    }
+
   </style>
 </head>
 <body>
+  <button id="mode-toggle">Day Mode</button>
+
   <header>
     <img src="logo.png" alt="Doodle Me A Pet Logo">
     <p class="tagline">
       🐾 Doodling pets worldwide, <strong>one silly sketch at a time.</strong><br>
       Send your pet’s photo, and I’ll doodle them for you!<br>
-      (0% AI).
     </p>
   </header>
 
@@ -344,8 +419,14 @@
     });
 
     loadGallery();
+
+    // Toggle day night mode
+    const toggleBtn = document.getElementById('mode-toggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggleBtn.classList.toggle('light');
+      toggleBtn.textContent = document.body.classList.contains('light') ? 'Night Mode' : 'Day Mode';
+    });
   </script>
 </body>
 </html>
-
-
